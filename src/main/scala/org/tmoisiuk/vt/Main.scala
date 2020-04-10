@@ -50,4 +50,6 @@ object Main extends App with LazyLogging {
   def saveToKafka(vacancies: Iterable[Vacancy]): Unit = vacancies.foreach(
     vacancy => kafkaClient.sendData(vacancy.getId, vacancy.toJson)
   )
+//
+//  def show(vacancies: Iterable[Vacancy]) = vacancies.foreach(v => println(v))
 }
