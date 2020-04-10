@@ -28,7 +28,7 @@ class KafkaClient(config: KafkaConfig) extends LazyLogging {
     * Sending json to kafka
     *
     * @param key   record key
-    * @param value recoed value
+    * @param value record value
     */
   def sendData(key: String, value: String): Unit = {
     val record = new ProducerRecord[String, String](config.topic, key, value)

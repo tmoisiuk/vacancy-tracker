@@ -1,8 +1,8 @@
 package org.tmoisiuk.hhl.config
 
 import com.typesafe.config.ConfigFactory
+import org.tmoisiuk.util.TextUtils._
 import pureconfig.generic.auto._
-import scala.io.Source
 
 case class AppConfig(load: LoadConfig,
                      kafka: KafkaConfig,
@@ -16,7 +16,7 @@ case class KafkaConfig(
                       )
 
 
-//todo move coments to readme
+//todo move comments to readme
 
 case class LoadConfig(period: Int)
 
@@ -42,16 +42,5 @@ object AppConfig {
     else ConfigFactory.load("pure.conf")
 
     pureconfig.loadConfigOrThrow[AppConfig](conf)
-  }
-
-  private def getTextFileContent(path: String): String = {
-    val resourceInputStream = getClass.getResourceAsStream(path)
-    if (resourceInputStream == null) {
-      throw new NullPointerException("Can't find the resource in classpath: " + path)
-    }
-    val source = Source.fromInputStream(resourceInputStream)("UTF-8")
-    val string = source.mkString
-    source.close()
-    string
   }
 }
