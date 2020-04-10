@@ -1,4 +1,4 @@
-package org.tmoisiuk.hhl.util
+package org.tmoisiuk.util
 
 object TextUtils {
   def removeQuotesAndEscape(str: String): String =

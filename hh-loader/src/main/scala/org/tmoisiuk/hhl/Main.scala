@@ -6,9 +6,7 @@ package org.tmoisiuk.hhl
 // также написать про ограничения АПИ в 100 результатов
 // проблема со стримитнгом потому что данные будут загружаться всегда за последние сутки
 // сложно высчитать инкремент
-
 // todo добавить доки
-// todo добавить логи
 
 import java.util.concurrent.{Executors, TimeUnit}
 
@@ -17,7 +15,8 @@ import org.apache.commons.lang3.exception.ExceptionUtils
 import org.tmoisiuk.hhl.config.AppConfig
 import org.tmoisiuk.hhl.hh_api.HeadHunterClient
 import org.tmoisiuk.hhl.kafka.KafkaClient
-import org.tmoisiuk.hhl.util.JsonOperations._
+import org.tmoisiuk.util.JsonOperations._
+import org.tmoisiuk.vt.MappedVacancy
 import ru.yaal.project.hhapi.vacancy.Vacancy
 
 import scala.util.{Failure, Success, Try}
@@ -48,8 +47,6 @@ object Main extends App with LazyLogging {
   }
 
   def saveToKafka(vacancies: Iterable[Vacancy]): Unit = vacancies.foreach(
-    vacancy => kafkaClient.sendData(vacancy.getId, vacancy.toJson)
+    vacancy => kafkaClient.sendData(vacancy.getId, MappedVacancy.from(vacancy).toJson)
   )
-//
-  def show(vacancies: Iterable[Vacancy]) = vacancies.foreach(v => println(v))
 }

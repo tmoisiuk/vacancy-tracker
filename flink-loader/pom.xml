@@ -11,29 +11,49 @@
 
     <artifactId>flink-loader</artifactId>
 
-    <properties>
-        <scala.compat.version>2.12</scala.compat.version>
-    </properties>
-
     <dependencies>
+        <dependency>
+            <groupId>tmoisiuk</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.12.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.scala-logging</groupId>
+            <artifactId>scala-logging_${scala.compat.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.commons</groupId>-->
+<!--            <artifactId>commons-lang3</artifactId>-->
+<!--            <version>3.9</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.github.pureconfig</groupId>
+            <artifactId>pureconfig_${scala.compat.version}</artifactId>
         </dependency>
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_${scala.compat.version}</artifactId>
-            <version>3.1.0</version>
         </dependency>
         <dependency>
-            <groupId>org.scalamock</groupId>
-            <artifactId>scalamock_${scala.compat.version}</artifactId>
-            <version>4.1.0</version>
-            <scope>test</scope>
+        <groupId>org.scalamock</groupId>
+        <artifactId>scalamock_${scala.compat.version}</artifactId>
+        <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
     <build>

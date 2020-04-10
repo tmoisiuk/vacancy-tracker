@@ -11,61 +11,52 @@
 
     <artifactId>hh-loader</artifactId>
 
-    <properties>
-        <scala.compat.version>2.12</scala.compat.version>
-    </properties>
-
     <dependencies>
+        <dependency>
+            <groupId>tmoisiuk</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.12.8</version>
         </dependency>
         <dependency>
             <groupId>ru.yaal.project.hhapi</groupId>
             <artifactId>HhJavaApi</artifactId>
-            <version>0.2.6</version>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
-            <version>2.4.1</version>
         </dependency>
         <dependency>
             <groupId>com.typesafe.scala-logging</groupId>
             <artifactId>scala-logging_${scala.compat.version}</artifactId>
-            <version>3.8.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-scala_${scala.compat.version}</artifactId>
-            <version>2.9.4</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pureconfig</groupId>
+            <artifactId>pureconfig_${scala.compat.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_${scala.compat.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.scalamock</groupId>
+            <artifactId>scalamock_${scala.compat.version}</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.9</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.pureconfig</groupId>
-            <artifactId>pureconfig_${scala.compat.version}</artifactId>
-            <version>0.11.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_${scala.compat.version}</artifactId>
-            <version>3.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.scalamock</groupId>
-            <artifactId>scalamock_${scala.compat.version}</artifactId>
-            <version>4.1.0</version>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
