@@ -14,7 +14,7 @@ class KafkaClient(config: KafkaConfig) extends LazyLogging {
 
   private[kafka] def props: Properties = {
     val props = new Properties()
-    props.put("bootstrap.servers", config.bootstrapServers)
+    props.put("bootstrap.servers", config.bootstrapServers.mkString(","))
     props.put("key.serializer", config.keySerializer)
     props.put("value.serializer", config.valueSerializer)
     props
