@@ -1,5 +1,6 @@
 package org.tmoisiuk.fl
 
+import com.typesafe.scalalogging.LazyLogging
 import org.tmoisiuk.fl.config.AppConfig
 import org.apache.flink.streaming.api.datastream.DataStreamSink
 import org.apache.flink.streaming.api.scala._
@@ -12,9 +13,10 @@ import postgres.PostgresVacancySink
 import scala.util.Try
 
 
-object Main extends App {
+object Main extends App with LazyLogging {
 
   val config = AppConfig()
+  logger.info(s"configuration: $config")
 
   val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
   val streamProvider = new KafkaStreamProvider(env, config.kafka)
@@ -22,6 +24,8 @@ object Main extends App {
 
   val vacancies: DataStream[MappedVacancy] = getVacancies(streamProvider.stream, filterMalformed)
   val sinkQuery = getTextFileContent("/upsert_query.sql")
+
+  logger.info(s"Sink query: $sinkQuery")
 
   saveToPostgres(vacancies)
 

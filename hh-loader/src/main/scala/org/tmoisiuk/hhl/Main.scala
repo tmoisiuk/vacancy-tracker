@@ -25,6 +25,8 @@ import scala.util.{Failure, Success, Try}
 object Main extends App with LazyLogging {
 
   val config = AppConfig()
+  logger.info(s"configuration: $config")
+
   val kafkaClient = new KafkaClient(config.kafka)
   val hhClient = HeadHunterClient
 

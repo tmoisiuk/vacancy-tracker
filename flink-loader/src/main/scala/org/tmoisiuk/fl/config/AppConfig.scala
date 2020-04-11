@@ -28,7 +28,9 @@ case class JdbcConfig(driver: String,
                       url: String,
                       username: String,
                       password: String,
-                      batchInterval: Int)
+                      batchInterval: Int) {
+  override def toString: String = s"JdbcConfig(driver:$driver,url:$url,username:$username:password:***,batchInterval:$batchInterval)"
+}
 
 object AppConfig {
 

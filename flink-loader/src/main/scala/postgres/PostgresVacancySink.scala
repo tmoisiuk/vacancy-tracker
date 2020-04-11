@@ -2,6 +2,7 @@ package postgres
 
 import java.sql.Types
 
+import com.typesafe.scalalogging.LazyLogging
 import org.tmoisiuk.fl.config.JdbcConfig
 import org.apache.flink.api.java.io.jdbc.JDBCOutputFormat
 import org.apache.flink.streaming.api.datastream.DataStreamSink
@@ -10,7 +11,7 @@ import org.apache.flink.types.Row
 import org.tmoisiuk.fl.vt.MappedVacancy
 import org.apache.flink.streaming.api.scala._
 
-class PostgresVacancySink(config: JdbcConfig) {
+class PostgresVacancySink(config: JdbcConfig) extends LazyLogging {
 
   def write(vacancies: DataStream[MappedVacancy], sqlQuery: String): DataStreamSink[Row] = {
 
