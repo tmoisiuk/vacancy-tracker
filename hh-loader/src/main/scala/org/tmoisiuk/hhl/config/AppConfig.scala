@@ -15,9 +15,6 @@ case class KafkaConfig(
                         valueSerializer: String,
                       )
 
-
-//todo move comments to readme
-
 case class LoadConfig(period: Int)
 
 case class SearchConfig(
