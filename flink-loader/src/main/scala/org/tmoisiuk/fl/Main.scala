@@ -1,12 +1,12 @@
 package org.tmoisiuk.fl
 
-import config.AppConfig
+import org.tmoisiuk.fl.config.AppConfig
 import org.apache.flink.streaming.api.datastream.DataStreamSink
 import org.apache.flink.streaming.api.scala._
 import org.tmoisiuk.fl.flink.KafkaStreamProvider
-import org.tmoisiuk.util.JsonOperations._
-import org.tmoisiuk.util.TextUtils.getTextFileContent
-import org.tmoisiuk.vt.MappedVacancy
+import org.tmoisiuk.fl.util.JsonOperations._
+import org.tmoisiuk.fl.util.TextUtils.getTextFileContent
+import org.tmoisiuk.fl.vt.MappedVacancy
 import postgres.PostgresVacancySink
 
 import scala.util.Try
