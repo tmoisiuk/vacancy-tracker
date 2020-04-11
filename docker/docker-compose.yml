@@ -18,9 +18,23 @@ services:
     container_name: postgres_container1
     image: postgres:9.5-alpine
     environment:
-      POSTGRES_USER: postgres     # define credentials
-      POSTGRES_PASSWORD: password # define credentials
-      POSTGRES_DB: vt_db       # define database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password #todo security
+      POSTGRES_DB: vt_db
     ports:
       - "5432:5432"
 
+  hh-loader:
+    image: hh-loader
+    network_mode: host #todo security
+    depends_on:
+      - postgres
+      - kafka-cluster
+
+  flink-loader:
+    image: flink-loader
+    network_mode: host #todo security
+    depends_on:
+      - postgres
+      - kafka-cluster
+      - hh-loader
