@@ -1,4 +1,4 @@
-package org.tmoisiuk.vt
+package org.tmoisiuk.hhl.vt
 
 import java.net.URL
 import java.sql.Date

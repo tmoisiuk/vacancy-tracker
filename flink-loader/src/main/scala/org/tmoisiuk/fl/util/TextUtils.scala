@@ -1,4 +1,4 @@
-package org.tmoisiuk.util
+package org.tmoisiuk.fl.util
 
 import scala.io.Source
 

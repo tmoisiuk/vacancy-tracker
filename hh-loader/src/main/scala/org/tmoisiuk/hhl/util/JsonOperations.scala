@@ -1,4 +1,4 @@
-package org.tmoisiuk.util
+package org.tmoisiuk.hhl.util
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include
 import com.fasterxml.jackson.databind.{DeserializationFeature, ObjectMapper}

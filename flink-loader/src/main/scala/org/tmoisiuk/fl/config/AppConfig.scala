@@ -1,10 +1,10 @@
-package config
+package org.tmoisiuk.fl.config
 
 import java.util.Properties
 
 import com.typesafe.config.ConfigFactory
 import pureconfig.generic.auto._
-import org.tmoisiuk.util.TextUtils._
+import org.tmoisiuk.fl.util.TextUtils._
 
 case class AppConfig(kafka: KafkaConfig, jdbc: JdbcConfig)
 

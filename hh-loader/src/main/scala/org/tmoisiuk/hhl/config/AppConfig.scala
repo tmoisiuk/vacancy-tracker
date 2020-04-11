@@ -1,7 +1,7 @@
 package org.tmoisiuk.hhl.config
 
 import com.typesafe.config.ConfigFactory
-import org.tmoisiuk.util.TextUtils._
+import org.tmoisiuk.hhl.util.TextUtils._
 import pureconfig.generic.auto._
 
 case class AppConfig(load: LoadConfig,

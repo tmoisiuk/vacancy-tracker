@@ -2,12 +2,12 @@ package postgres
 
 import java.sql.Types
 
-import config.JdbcConfig
+import org.tmoisiuk.fl.config.JdbcConfig
 import org.apache.flink.api.java.io.jdbc.JDBCOutputFormat
 import org.apache.flink.streaming.api.datastream.DataStreamSink
 import org.apache.flink.streaming.api.scala.DataStream
 import org.apache.flink.types.Row
-import org.tmoisiuk.vt.MappedVacancy
+import org.tmoisiuk.fl.vt.MappedVacancy
 import org.apache.flink.streaming.api.scala._
 
 class PostgresVacancySink(config: JdbcConfig) {

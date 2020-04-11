@@ -1,7 +1,8 @@
 package org.tmoisiuk.hhl
 
 // todo запрос для поиска, где должен находится?
-// todo сделать конфиг из переменных среды
+// todo сделать конфиг из реф файла, переписать, добавить скаллоп
+
 // написать что серч по параметрам ограничен, потому что используется сущ клиент.
 // также написать про ограничения АПИ в 100 результатов
 // проблема со стримитнгом потому что данные будут загружаться всегда за последние сутки
@@ -15,8 +16,8 @@ import org.apache.commons.lang3.exception.ExceptionUtils
 import org.tmoisiuk.hhl.config.AppConfig
 import org.tmoisiuk.hhl.hh_api.HeadHunterClient
 import org.tmoisiuk.hhl.kafka.KafkaClient
-import org.tmoisiuk.util.JsonOperations._
-import org.tmoisiuk.vt.MappedVacancy
+import org.tmoisiuk.hhl.util.JsonOperations._
+import org.tmoisiuk.hhl.vt.MappedVacancy
 import ru.yaal.project.hhapi.vacancy.Vacancy
 
 import scala.util.{Failure, Success, Try}

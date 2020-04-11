@@ -1,6 +1,6 @@
 package org.tmoisiuk.fl.flink
 
-import config.KafkaConfig
+import org.tmoisiuk.fl.config.KafkaConfig
 import org.apache.flink.api.common.serialization.SimpleStringSchema
 import org.apache.flink.streaming.api.scala.{StreamExecutionEnvironment, _}
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer
