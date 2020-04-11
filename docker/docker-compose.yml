@@ -1,0 +1,13 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres:9.5-alpine
+    environment:
+      POSTGRES_USER: postgres     # define credentials
+      POSTGRES_PASSWORD: password # define credentials
+      POSTGRES_DB: vt_db       # define database
+    ports:
+      - "5432:5432"
+

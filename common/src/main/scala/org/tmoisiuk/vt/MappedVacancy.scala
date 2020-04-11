@@ -1,7 +1,7 @@
 package org.tmoisiuk.vt
 
 import java.net.URL
-import java.util.Date
+import java.sql.Date
 
 import ru.yaal.project.hhapi.dictionary.entry.IDictionaryEntry
 import ru.yaal.project.hhapi.vacancy.Vacancy
@@ -26,7 +26,7 @@ object SearchField {
     SearchField(searchEntry.getId, searchEntry.getName)
 }
 
-case class MappedVacancy(id: String,
+case class MappedVacancy(id: Int,
                          name: String,
                          url: URL,
                          description: String,
@@ -44,7 +44,7 @@ case class MappedVacancy(id: String,
 object MappedVacancy {
 
   def from(vacancy: Vacancy): MappedVacancy = MappedVacancy(
-    id = vacancy.getId,
+    id = vacancy.getId.toInt,
     name = vacancy.getName,
     url = vacancy.getUrl,
     description = vacancy.getDescription,
@@ -68,7 +68,7 @@ object MappedVacancy {
     ),
     archived = vacancy.getArchived,
     area = SearchField(vacancy.getArea),
-    createdAt = vacancy.getCreatedAt,
+    createdAt = new Date(vacancy.getCreatedAt.getTime),
     employer = EmployerInVacancy(
       vacancy.getEmployer.getUrl,
       vacancy.getEmployer.getAlternateUrl

@@ -1,0 +1,25 @@
+
+ CREATE TABLE vacancies(
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    url TEXT,
+    description TEXT,
+    schedule_id TEXT,
+    accept_handicapped BOOLEAN,
+    experience_id TEXT,
+    address_building TEXT,
+    address_city TEXT,
+    address_street TEXT,
+    address_description TEXT,
+    address_raw TEXT,
+    address_lat NUMERIC,
+    address_lng NUMERIC,
+    employment_id TEXT,
+    salary_from INTEGER,
+    salary_to INTEGER,
+    salary_currency TEXT,
+    is_archived BOOLEAN,
+    area_id TEXT,
+    createdAt DATE,
+    employer_url TEXT
+);

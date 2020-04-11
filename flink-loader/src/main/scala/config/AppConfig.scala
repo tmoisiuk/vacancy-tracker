@@ -6,7 +6,7 @@ import com.typesafe.config.ConfigFactory
 import pureconfig.generic.auto._
 import org.tmoisiuk.util.TextUtils._
 
-case class AppConfig(kafka: KafkaConfig)
+case class AppConfig(kafka: KafkaConfig, jdbc: JdbcConfig)
 
 case class KafkaConfig(topic: String,
                        groupId: String,
@@ -23,6 +23,12 @@ case class KafkaConfig(topic: String,
     properties
   }
 }
+
+case class JdbcConfig(driver: String,
+                      url: String,
+                      username: String,
+                      password: String,
+                      batchInterval: Int)
 
 object AppConfig {
 
