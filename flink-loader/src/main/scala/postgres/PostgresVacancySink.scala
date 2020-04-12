@@ -13,6 +13,14 @@ import org.apache.flink.streaming.api.scala._
 
 class PostgresVacancySink(config: JdbcConfig) extends LazyLogging {
 
+  /**
+    * Creates a jdbc sink and loads data to DB
+    *
+    * @param vacancies input datastream
+    * @param sqlQuery  insert query
+    * @return DataStreamSink of Row
+    **/
+
   def write(vacancies: DataStream[MappedVacancy], sqlQuery: String): DataStreamSink[Row] = {
 
     val queryTypes = Array(

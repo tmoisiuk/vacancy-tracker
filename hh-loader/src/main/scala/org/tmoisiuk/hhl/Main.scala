@@ -1,14 +1,5 @@
 package org.tmoisiuk.hhl
 
-// todo запрос для поиска, где должен находится?
-// todo сделать конфиг из реф файла, переписать, добавить скаллоп
-
-// написать что серч по параметрам ограничен, потому что используется сущ клиент.
-// также написать про ограничения АПИ в 100 результатов
-// проблема со стримитнгом потому что данные будут загружаться всегда за последние сутки
-// сложно высчитать инкремент
-// todo добавить доки
-
 import java.util.concurrent.{Executors, TimeUnit}
 
 import com.typesafe.scalalogging.LazyLogging
@@ -22,14 +13,16 @@ import ru.yaal.project.hhapi.vacancy.Vacancy
 
 import scala.util.{Failure, Success, Try}
 
+/**
+  * Head hunter API Runner
+  * Creates configuration, searches for vacancies and send the data to Kafka
+  */
 object Main extends App with LazyLogging {
 
   val config = AppConfig()
   logger.info(s"configuration: $config")
 
   val kafkaClient = new KafkaClient(config.kafka)
-  val hhClient = HeadHunterClient
-
   sys.addShutdownHook(() -> kafkaClient.closeKafkaProducer())
 
   val load = new Runnable {

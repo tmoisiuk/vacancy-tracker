@@ -10,6 +10,14 @@ import scala.collection.JavaConverters._
 
 object HeadHunterClient {
 
+  /**
+    *
+    * Searches for vacancies accordingly to search config
+    *
+    * @param config configuration of search query
+    * @return vacancies
+    */
+
   def searchVacancies(config: SearchConfig): Iterable[Vacancy] =
     getSearch(config, new VacancySearch(config.vacancyLimit))
       .search

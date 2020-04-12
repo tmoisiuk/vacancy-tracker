@@ -1,14 +1,21 @@
-Vacancy tracker
+**Vacancy tracker**
 
 Head Hunter vacancy tracking platform
+
+**Modules**
+
+`hh-loader` loads HeadHunter data, converts and upload to Kafka
+
+`flink-loader` loads data from Kafka topic and then stores it in Postgres DB
 
 
 
 **Configuration**
+
 Conf files in HOCON format are used in flink-loader and hh-loader applications.
 Please see https://github.com/lightbend/config/blob/master/HOCON.md
 
-hh-loader config example:
+`hh-loader` config example:
 
 ```hocon
 
@@ -38,7 +45,7 @@ search: {
   employment: "part", // Employment (Optional, options: "full", "part", "project", "volunteer", "probation"
 }
 ```
-flink-loader config example:
+`flink-loader` config example:
 
 ```hocon
 kafka: {
@@ -64,11 +71,13 @@ jdbc: { //jdbc properties
 
     - Remove loaders configuration files and sql queries to external directory or environment variables
     - Create more configurable vacancy search query
+    - Set up data quality checking mechanism. Currently Flink loader skip data which cannot be deserialized 
+    - Support other serialization options 
     
 2. Security:
 
     - Remove secrets from configuration
-    - avoid 'network: host' in Docker compose
+    - Change 'network: host' in Docker compose
 
 3. HH API limitations:
 

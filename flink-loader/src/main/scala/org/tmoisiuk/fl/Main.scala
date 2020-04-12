@@ -12,7 +12,10 @@ import postgres.PostgresVacancySink
 
 import scala.util.Try
 
-
+/**
+  * Flink Runner
+  * Creates configuration, extracts data from Kafka topic, loads to DB in streaming manner
+  */
 object Main extends App with LazyLogging {
 
   val config = AppConfig()
@@ -41,6 +44,14 @@ object Main extends App with LazyLogging {
   def filterMalformed(input: DataStream[Try[MappedVacancy]]): DataStream[MappedVacancy] =
     input.flatMap(_.toOption)
 
+  /**
+    * Vacancies converter
+    *
+    * @param stream          DataStream of json strings
+    * @param handleMalformed function for invalid records handling
+    * @return DataStream of [[org.tmoisiuk.fl.vt.MappedVacancy]]
+    *
+    **/
   def getVacancies(stream: DataStream[String],
                    handleMalformed: DataStream[Try[MappedVacancy]] => DataStream[MappedVacancy]):
   DataStream[MappedVacancy] = handleMalformed(stream.map(str => Try(str.as[MappedVacancy])))

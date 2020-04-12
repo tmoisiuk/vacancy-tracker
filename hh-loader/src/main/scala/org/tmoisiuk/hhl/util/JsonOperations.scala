@@ -5,6 +5,11 @@ import com.fasterxml.jackson.databind.{DeserializationFeature, ObjectMapper}
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
 
+/**
+
+* Utility class for Json Serialization/Deserialization operations
+*/
+
 object JsonOperations {
 
   private val mapper: ObjectMapper with ScalaObjectMapper = JsonOperations.objectMapper

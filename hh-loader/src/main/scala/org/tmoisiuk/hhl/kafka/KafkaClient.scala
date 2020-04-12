@@ -1,14 +1,15 @@
 package org.tmoisiuk.hhl.kafka
 
 import java.util.Properties
-import java.util.concurrent.Future
 
 import com.typesafe.scalalogging.LazyLogging
 import org.apache.kafka.clients.producer.{KafkaProducer, Producer, ProducerRecord, RecordMetadata}
 import org.tmoisiuk.hhl.config.KafkaConfig
 
+import scala.concurrent.{ExecutionContext, ExecutionContextExecutor}
+
 /**
-  * Starting kafka producer to send messages
+  * Starts kafka producer to send messages
   */
 class KafkaClient(config: KafkaConfig) extends LazyLogging {
 
@@ -25,7 +26,7 @@ class KafkaClient(config: KafkaConfig) extends LazyLogging {
   private[kafka] val kafkaProducer = getProducer
 
   /**
-    * Sending json to kafka
+    * Sends json record to kafka
     *
     * @param key   record key
     * @param value record value
@@ -35,16 +36,18 @@ class KafkaClient(config: KafkaConfig) extends LazyLogging {
     processMessage(kafkaProducer.send(record))
   }
 
-  private[kafka] def processMessage(messageMetadata: Future[RecordMetadata]): Unit = {
-    if (!messageMetadata.isDone) {
-      logger.info(s"Kafka message for topic (${messageMetadata.get.topic}) sent successfully")
-    } else {
-      logger.info(s"Error while sending to Kafka")
+  private[kafka] def processMessage(future: java.util.concurrent.Future[RecordMetadata]): Unit = {
+    implicit val ec: ExecutionContextExecutor = ExecutionContext.global
+
+    scala.concurrent.Future {
+      future.get()
+    } onComplete { recordMetadata =>
+      logger.info(s"Record sent to Kafka, record metadata: $recordMetadata")
     }
   }
 
   /**
-    * Close Kafka Producer
+    * Closes Kafka Producer
     */
   def closeKafkaProducer(): Unit = kafkaProducer.close()
 }
