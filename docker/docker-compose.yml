@@ -25,14 +25,16 @@ services:
       - "5432:5432"
 
   hh-loader:
-    image: hh-loader
+    container_name: hh-loader
+    image: tmoisiuk/hh-loader:1.0
     network_mode: host #todo security
     depends_on:
       - postgres
       - kafka-cluster
 
   flink-loader:
-    image: flink-loader
+    container_name: flink-loader
+    image: tmoisiuk/flink-loader:1.0
     network_mode: host #todo security
     depends_on:
       - postgres
